@@ -20,7 +20,7 @@ data class Task (
         @LastModifiedDate
         var lastModifiedDate: LocalDateTime?,
 
-
+        var idempotencyKey : UUID,
         var priority: Long,
         @ManyToOne(optional = false)
         @JoinColumn(name = "source_id", nullable = false)

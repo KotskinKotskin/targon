@@ -19,7 +19,7 @@ data class Workbasket(
 
         var name: String,
 
-        var idempotencyKey : String,
+
 
         @OneToMany(mappedBy = "workbasket")
         var tasks: Set<Task>?

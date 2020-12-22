@@ -5,4 +5,7 @@ import org.springframework.data.repository.CrudRepository
 import java.util.*
 
 interface TaskRepository: CrudRepository<Task, UUID> {
+
+
+    fun findByIdempotencyKey(indepotencyKey: UUID): Task?
 }
