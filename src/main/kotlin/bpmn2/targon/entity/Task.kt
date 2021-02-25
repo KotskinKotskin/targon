@@ -1,6 +1,7 @@
 package bpmn2.targon.entity
 
 import bpmn2.targon.entity.enums.Status
+import com.fasterxml.jackson.annotation.JsonIgnore
 import org.springframework.data.annotation.CreatedDate
 
 import org.springframework.data.annotation.LastModifiedDate
@@ -20,21 +21,22 @@ data class Task (
         @LastModifiedDate
         var lastModifiedDate: LocalDateTime?,
 
-        var idempotencyKey : UUID,
+        var idempotentKey : UUID,
         var priority: Long,
         @ManyToOne(optional = false)
         @JoinColumn(name = "source_id", nullable = false)
+        @JsonIgnore
         var source: Source,
         @Column(columnDefinition = "TIMESTAMP")
         var dueDate: LocalDateTime?,
         var businessObjectId: String,
         var formId: String,
-        var businessDomain: String,
         @ManyToOne(optional = true)
-        @JoinColumn(name = "workbasket_id", nullable = false)
+        @JoinColumn(name = "workbasket_id")
         var workbasket: Workbasket?,
-        @ManyToOne(optional = false)
-        @JoinColumn(name = "employee_id", nullable = false)
+        @ManyToOne(optional = true)
+        @JoinColumn(name = "employee_id")
+        @JsonIgnore
         var employee: Employee?,
         @Enumerated(EnumType.STRING)
         var status: Status

@@ -5,4 +5,6 @@ import org.springframework.data.repository.CrudRepository
 import java.util.*
 
 interface EmployeeRepository: CrudRepository<Employee, UUID> {
+
+    fun findByLogin(login: String?): Employee?
 }

@@ -1,5 +1,6 @@
 package bpmn2.targon.entity
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedDate
 import java.time.LocalDateTime
@@ -17,9 +18,9 @@ data class Employee(
         val createdDate: LocalDateTime = LocalDateTime.now(),
         @LastModifiedDate
         var lastModifiedDate: LocalDateTime,
-
         var login: String,
         @OneToMany(mappedBy = "employee")
+        @JsonIgnore
         var tasks: Set<Task>?
 
 ) {

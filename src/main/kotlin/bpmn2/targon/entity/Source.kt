@@ -17,8 +17,8 @@ data class Source(
         val createdDate: LocalDateTime = LocalDateTime.now(),
         @LastModifiedDate
         var lastModifiedDate: LocalDateTime,
-
         var name: String,
+        var frameUrl: String,
         @OneToMany(mappedBy = "source")
         var tasks: Set<Task>?
 
